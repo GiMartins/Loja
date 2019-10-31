@@ -11,7 +11,7 @@ import model.Fornecedor;
 
 public class TelaCadastroFornecedorView {
 
-public VBox getTelaCadastroFornecedor(Stage stage){
+public VBox getTelaCadastroFornecedor (Stage stage) {
         VBox raiz = new VBox();
 
         Label lblNomeFornecedor = new Label("Nome do Fornecedor");
@@ -46,12 +46,12 @@ public VBox getTelaCadastroFornecedor(Stage stage){
 
 
 
-         raiz.setAlignment(Pos.CENTER);
+
 
 
          raiz.getChildren().addAll(lblNomeFornecedor, txtNomeFornecedor, lblNomeFantasia, txtNomeFantasia, lblCnpjCpf, txtCnpjCpf, lblTelefoneFornecedor, txtTelefoneFornecedor, lblCodigoFornecedor,
                  txtCodigoFornecedor, lblEnderecoFornecedor, txtEnderecoFornecedor, lblLogradouroFornecedor, txtLogradouroFornecedor, lblComplementoFornecedor,
-                 txtComplementoFornecedor, lblNumero, txtNumero,lblEstado, txtEstado, lblBairro, txtBairro, lblCepFornecedor, txtCepFornecedor);
+                 txtComplementoFornecedor, lblNumero, txtNumero,lblEstado, txtEstado, lblBairro, txtBairro, lblCepFornecedor, txtCepFornecedor,btnCadastrarFonecedor,btnLimpar);
 
 
     btnCadastrarFonecedor.setOnAction(event -> {
