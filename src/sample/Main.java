@@ -4,15 +4,23 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import view.MenuBarView;
 
 public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
+
+        VBox raiz = new VBox();
+
+        MenuBarView menuBarView = new MenuBarView();
+        raiz.getChildren().addAll(menuBarView.getMenuBar(primaryStage));
+
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 300, 275));
+        primaryStage.setTitle("Loja Ual Presentes");
+        primaryStage.setScene(new Scene(raiz, 500, 275));
         primaryStage.show();
     }
 
