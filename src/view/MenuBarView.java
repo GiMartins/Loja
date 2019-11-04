@@ -27,6 +27,12 @@ public class MenuBarView {
         stg.setScene(new Scene(TelaCadastroProdutos.getTelaProdutos(stg), 500, 275));
         stg.show();
     });
+        cadastrarFornecedor.setOnAction(actionEvent -> {
+         stg.setTitle("Cadastrar Fornecedor");
+         TelaCadastroFornecedorView TelaCadastroFornecedorView = new TelaCadastroFornecedorView();
+         stg.setScene(new Scene(TelaCadastroFornecedorView.getTelaCadastroFornecedor(stg), 500, 275));
+         stg.show();
+        });
 
 
         return menuBar;

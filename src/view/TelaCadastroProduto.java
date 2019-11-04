@@ -6,6 +6,7 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import model.produtos;
 
 
 public class TelaCadastroProduto{
@@ -38,6 +39,42 @@ public class TelaCadastroProduto{
 
         Button btnCadastrar = new Button("Cadastrar");
         Button btnApagar = new Button("Apagar");
+
+
+        MenuBarView menuBarView = new MenuBarView();
+        MenuBar menuBar = menuBarView.getMenuBar(stage);
+
+
+        btnCadastrar.setOnAction(event -> {
+                    produtos produtos = new produtos(
+            txtNomeProduto.getText(),
+            txtTipoProduto.getText(),
+            txtMarcaDoProduto.getText(),
+            txtFornecedor.getText(),
+            txtQuantidade.getText(),
+            txtPrecoDeCompra.getText(),
+            txtNumNota.getText(),
+            txtValidadeDoProduto.getText(),
+            txtCodigoDeBarras.getText());
+
+
+
+            System.out.println(produtos);
+
+
+        });
+
+        btnApagar.setOnAction(event -> {
+            txtNomeProduto.setText("");
+            txtTipoProduto.setText("");
+            txtMarcaDoProduto.setText("");
+            txtFornecedor.setText("");
+            txtQuantidade.setText("");
+            txtPrecoDeCompra.setText("");
+            txtNumNota.setText("");
+            txtValidadeDoProduto.setText("");
+            txtCodigoDeBarras.setText("");
+        });
 
         raiz.getChildren().addAll(lblProduto, txtNomeProduto, lblTipoProduto, txtTipoProduto, lblMarca, txtMarcaDoProduto, lblFornecedor, txtFornecedor, lblQuantidade, txtQuantidade, lblPrecoCompra,
                 txtPrecoDeCompra, lblNumNota, txtNumNota, lblValidade, txtValidadeDoProduto, lblCodigoBarras, txtCodigoDeBarras, lblMensagem, btnCadastrar, btnApagar);

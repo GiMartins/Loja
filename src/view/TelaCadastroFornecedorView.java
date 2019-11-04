@@ -3,6 +3,7 @@ package view;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuBar;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -11,7 +12,7 @@ import model.Fornecedor;
 
 public class TelaCadastroFornecedorView {
 
-public VBox getTelaCadastroFornecedor(Stage stage){
+public VBox getTelaCadastroFornecedor (Stage stage) {
         VBox raiz = new VBox();
 
         Label lblNomeFornecedor = new Label("Nome do Fornecedor");
@@ -43,15 +44,18 @@ public VBox getTelaCadastroFornecedor(Stage stage){
           Button btnCadastrarFonecedor = new Button("Cadastrar Fornecedor");
           Button btnLimpar = new Button("Limpar");
 
+    MenuBarView menuBarView = new MenuBarView();
+    MenuBar menuBar = menuBarView.getMenuBar(stage);
 
 
 
-         raiz.setAlignment(Pos.CENTER);
 
 
-         raiz.getChildren().addAll(lblNomeFornecedor, txtNomeFornecedor, lblNomeFantasia, txtNomeFantasia, lblCnpjCpf, txtCnpjCpf, lblTelefoneFornecedor, txtTelefoneFornecedor, lblCodigoFornecedor,
+
+
+         raiz.getChildren().addAll(menuBar, lblNomeFornecedor, txtNomeFornecedor, lblNomeFantasia, txtNomeFantasia, lblCnpjCpf, txtCnpjCpf, lblTelefoneFornecedor, txtTelefoneFornecedor, lblCodigoFornecedor,
                  txtCodigoFornecedor, lblEnderecoFornecedor, txtEnderecoFornecedor, lblLogradouroFornecedor, txtLogradouroFornecedor, lblComplementoFornecedor,
-                 txtComplementoFornecedor, lblNumero, txtNumero,lblEstado, txtEstado, lblBairro, txtBairro, lblCepFornecedor, txtCepFornecedor);
+                 txtComplementoFornecedor, lblNumero, txtNumero,lblEstado, txtEstado, lblBairro, txtBairro, lblCepFornecedor, txtCepFornecedor,btnCadastrarFonecedor,btnLimpar);
 
 
     btnCadastrarFonecedor.setOnAction(event -> {
