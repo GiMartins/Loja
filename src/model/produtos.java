@@ -24,6 +24,7 @@ public class produtos {
         this.codigoProduto = codigoProduto;
     }
 
+
     public String getNome() {
         return nome;
     }
