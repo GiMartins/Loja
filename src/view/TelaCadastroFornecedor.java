@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 import model.Fornecedor;
 
 
-public class TelaCadastroFornecedorView {
+public class TelaCadastroFornecedor {
 
 public VBox getTelaCadastroFornecedor (Stage stage) {
         VBox raiz = new VBox();
