@@ -29,9 +29,16 @@ public class MenuBarView {
     });
         cadastrarFornecedor.setOnAction(actionEvent -> {
          stg.setTitle("Cadastrar Fornecedor");
-         TelaCadastroFornecedorView TelaCadastroFornecedorView = new TelaCadastroFornecedorView();
+         TelaCadastroFornecedor TelaCadastroFornecedorView = new TelaCadastroFornecedor();
          stg.setScene(new Scene(TelaCadastroFornecedorView.getTelaCadastroFornecedor(stg), 500, 275));
          stg.show();
+        });
+
+        cadastrarCliente.setOnAction(event -> {
+            stg.setTitle("Cadastrar Cliente");
+            TelaCadastroCliente telaCadastroCliente = new TelaCadastroCliente();
+            stg.setScene(new Scene(telaCadastroCliente.getTelaCadastro(stg), 500, 275));
+            stg.show();
         });
 
 

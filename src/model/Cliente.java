@@ -2,12 +2,12 @@ package model;
 
 public class Cliente {
 
-    private java.lang.String nome;
-    private java.lang.String sobreNome;
-    private java.lang.String idade;
-    private java.lang.String cpf;
-    private java.lang.String cnpj;
-    private java.lang.String codigo;
+    private String nome;
+    private String sobreNome;
+    private String idade;
+    private String cpf;
+    private String cnpj;
+    private String codigo;
     private Endereco endereco;
 
     public Cliente(String nome, String sobreNome, String idade, String cpf, String cnpj, String codigo, Endereco endereco) {
