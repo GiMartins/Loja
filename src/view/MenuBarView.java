@@ -24,7 +24,7 @@ public class MenuBarView {
         cadastrarProduto.setOnAction(event -> {
         stg.setTitle("Cadastrar Produtos");
         TelaCadastroProduto TelaCadastroProdutos = new TelaCadastroProduto();
-        stg.setScene(new Scene(TelaCadastroProdutos.getTelaProdutos(stg), 500, 275));
+        stg.setScene(new Scene(TelaCadastroProdutos.getTelaProdutos(stg), 700, 800));
         stg.show();
     });
         cadastrarFornecedor.setOnAction(actionEvent -> {
