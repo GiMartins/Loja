@@ -11,6 +11,9 @@ import model.produtos;
 
 public class TelaCadastroProduto{
 
+    public TelaCadastroProduto() {
+    }
+
     public VBox getTelaProdutos(Stage stage){
 
         VBox raiz = new VBox();
@@ -37,13 +40,12 @@ public class TelaCadastroProduto{
         TextField txtCodigoDeBarras = new TextField();
 
 
-        Button btnCadastrar = new Button("Cadastrar");
+        Button btnCadastrar = new Button("Cadastrar Produtos");
         Button btnApagar = new Button("Apagar");
 
 
         MenuBarView menuBarView = new MenuBarView();
         MenuBar menuBar = menuBarView.getMenuBar(stage);
-
 
         btnCadastrar.setOnAction(event -> {
                     produtos produtos = new produtos(
@@ -56,6 +58,15 @@ public class TelaCadastroProduto{
             txtNumNota.getText(),
             txtValidadeDoProduto.getText(),
             txtCodigoDeBarras.getText());
+            txtNomeProduto.setText("");
+            txtTipoProduto.setText("");
+            txtMarcaDoProduto.setText("");
+            txtFornecedor.setText("");
+            txtQuantidade.setText("");
+            txtPrecoDeCompra.setText("");
+            txtNumNota.setText("");
+            txtValidadeDoProduto.setText("");
+            txtCodigoDeBarras.setText("");
 
 
 
@@ -76,7 +87,7 @@ public class TelaCadastroProduto{
             txtCodigoDeBarras.setText("");
         });
 
-        raiz.getChildren().addAll(lblProduto, txtNomeProduto, lblTipoProduto, txtTipoProduto, lblMarca, txtMarcaDoProduto, lblFornecedor, txtFornecedor, lblQuantidade, txtQuantidade, lblPrecoCompra,
+        raiz.getChildren().addAll(menuBar, lblProduto, txtNomeProduto, lblTipoProduto, txtTipoProduto, lblMarca, txtMarcaDoProduto, lblFornecedor, txtFornecedor, lblQuantidade, txtQuantidade, lblPrecoCompra,
                 txtPrecoDeCompra, lblNumNota, txtNumNota, lblValidade, txtValidadeDoProduto, lblCodigoBarras, txtCodigoDeBarras, lblMensagem, btnCadastrar, btnApagar);
 
 
