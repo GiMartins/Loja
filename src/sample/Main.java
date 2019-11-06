@@ -19,7 +19,7 @@ public class Main extends Application {
         raiz.getChildren().addAll(menuBarView.getMenuBar(primaryStage));
 
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        primaryStage.setTitle("Loja Ual Presentes");
+        primaryStage.setTitle("Loja");
         primaryStage.setScene(new Scene(raiz, 700, 800));
         primaryStage.show();
     }
