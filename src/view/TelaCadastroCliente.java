@@ -8,6 +8,11 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import model.Cliente;
 import model.Endereco;
+import repository.ConnectionDB;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 public class TelaCadastroCliente {
 
@@ -18,12 +23,11 @@ public class TelaCadastroCliente {
         TextField txtNome = new TextField("");
         Label lblSobrenome = new Label("Sobrenome");
         TextField txtSobrenome = new TextField("");
-        Label lblIdade = new Label("Idade");
-        TextField txtIdade = new TextField("");
-        Label lblCpf = new Label("CPF");
-        TextField txtCpf = new TextField("");
-        Label lblCnpj = new Label("CNPJ");
-        TextField txtCnpj = new TextField("");
+        Label lblDataNascimento = new Label("Data de Nascimento");
+        TextField txtDataNascimento = new TextField("");
+        Label lblCpfCnpj = new Label("CPF/CNPJ");
+        TextField txtCpfCnpj = new TextField("");
+
         Label lblCodigo = new Label("Código");
         TextField txtCodigo = new TextField("");
         Label lblEndereco = new Label("Endereço");
@@ -44,26 +48,34 @@ public class TelaCadastroCliente {
         MenuBarView menuBarView = new MenuBarView();
         MenuBar menuBar = menuBarView.getMenuBar(stage);
 
-        raiz.getChildren().addAll(menuBar, lblNome, txtNome, lblSobrenome, txtSobrenome, lblIdade, txtIdade, lblCpf, txtCpf, lblCnpj, txtCnpj, lblCodigo, txtCodigo,
+        raiz.getChildren().addAll(menuBar, lblNome, txtNome, lblSobrenome, txtSobrenome, lblDataNascimento, txtDataNascimento, lblCpfCnpj, txtCpfCnpj, lblCodigo, txtCodigo,
                 lblEndereco, lblLogradouro, txtLogradouro, lblComplemento, txtComplemento, lblNumero, txtNumero, lblBairro, txtBairro, lblCep, txtCep,
                 btnCadastrar, btnLimpar);
 
         btnCadastrar.setOnAction(Event ->{
             Endereco endereco = new Endereco(txtLogradouro.getText(), txtComplemento.getText(), txtNumero.getText(), txtBairro.getText(), txtCep.getText());
-            Cliente cliente = new Cliente(txtNome.getText(), txtSobrenome.getText(), txtIdade.getText(), txtCpf.getText(), txtCnpj.getText(), txtCodigo.getText(), endereco);
+            Cliente cliente = new Cliente(txtNome.getText(), txtSobrenome.getText(), txtDataNascimento.getText(), txtCpfCnpj.getText(), txtCodigo.getText(), endereco);
 
-            System.out.println(cliente);
+            ConnectionDB connectionDB = new ConnectionDB();
+            Connection conn = connectionDB.getConnection();
 
+            String query = "INSERT INTO CLIENTE(NOME, SOBRENOME, DATA_NASCIMENTO, CPF_CNPJ, CODIGO)" + "VALUES ('" + cliente.getNome() + "','" + cliente.getSobreNome() + "','" + cliente.getDataNascimento() +"','" +
+                    cliente.getCpfCnpj() + "','" + cliente.getCodigo() + "')";
 
+            try {
+                Statement statement = conn.createStatement();
+                statement.executeUpdate(query);
+            } catch (SQLException e){
+                e.printStackTrace();
+            }
 
         });
 
         btnLimpar.setOnAction(Event -> {
             txtNome.setText("");
             txtSobrenome.setText("");
-            txtIdade.setText("");
-            txtCpf.setText("");
-            txtCnpj.setText("");
+            txtDataNascimento.setText("");
+            txtCpfCnpj.setText("");
             txtCodigo.setText("");
             txtLogradouro.setText("");
             txtComplemento.setText("");
