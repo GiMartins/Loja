@@ -6,7 +6,6 @@ public class Cliente {
     private String sobreNome;
     private String dataNascimento;
     private String cpfCnpj;
-
     private String codigo;
     private Endereco endereco;
 
