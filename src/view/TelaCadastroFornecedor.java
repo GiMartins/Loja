@@ -7,7 +7,13 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import model.Endereco;
 import model.Fornecedor;
+import repository.ConnectionDB;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 
 public class TelaCadastroFornecedor {
@@ -24,7 +30,6 @@ public VBox getTelaCadastroFornecedor (Stage stage) {
         Label lblLogradouroFornecedor = new Label("Logradouro");
         Label lblComplementoFornecedor = new Label("Complemento");
         Label lblNumero = new Label("Número");
-        Label lblEstado = new Label("Estado");
         Label lblBairro = new Label("Bairro");
         Label lblCepFornecedor = new Label("CEP");
 
@@ -33,11 +38,9 @@ public VBox getTelaCadastroFornecedor (Stage stage) {
          TextField txtCnpjCpf = new TextField();
          TextField txtTelefoneFornecedor = new TextField();
          TextField txtCodigoFornecedor = new TextField();
-         TextField txtEnderecoFornecedor = new TextField();
          TextField txtLogradouroFornecedor = new TextField();
          TextField txtComplementoFornecedor = new TextField();
          TextField txtNumero = new TextField();
-         TextField txtEstado = new TextField();
          TextField txtBairro = new TextField();
          TextField txtCepFornecedor = new TextField();
 
@@ -54,14 +57,30 @@ public VBox getTelaCadastroFornecedor (Stage stage) {
 
 
          raiz.getChildren().addAll(menuBar, lblNomeFornecedor, txtNomeFornecedor, lblNomeFantasia, txtNomeFantasia, lblCnpjCpf, txtCnpjCpf, lblTelefoneFornecedor, txtTelefoneFornecedor, lblCodigoFornecedor,
-                 txtCodigoFornecedor, lblEnderecoFornecedor, txtEnderecoFornecedor, lblLogradouroFornecedor, txtLogradouroFornecedor, lblComplementoFornecedor,
-                 txtComplementoFornecedor, lblNumero, txtNumero,lblEstado, txtEstado, lblBairro, txtBairro, lblCepFornecedor, txtCepFornecedor,btnCadastrarFonecedor,btnLimpar);
+                 txtCodigoFornecedor, lblEnderecoFornecedor, lblLogradouroFornecedor, txtLogradouroFornecedor, lblComplementoFornecedor,
+                 txtComplementoFornecedor, lblNumero, txtNumero,  lblBairro, txtBairro, lblCepFornecedor, txtCepFornecedor,btnCadastrarFonecedor,btnLimpar);
 
 
     btnCadastrarFonecedor.setOnAction(event -> {
-        Fornecedor fornecedor = new Fornecedor(txtNomeFornecedor.getText(), txtNomeFantasia.getText(),txtCnpjCpf.getText(), txtTelefoneFornecedor.getText(), txtCodigoFornecedor.getText(),
-               txtEnderecoFornecedor.getText(), txtLogradouroFornecedor.getText(), txtComplementoFornecedor.getText(), txtNumero.getText(), txtEstado.getText(), txtBairro.getText(),txtCepFornecedor.getText());
-         System.out.println(fornecedor);
+        Endereco endereco = new Endereco(txtLogradouroFornecedor.getText(), txtComplementoFornecedor.getText(), txtNumero.getText(), txtBairro.getText(),txtCepFornecedor.getText());
+        Fornecedor fornecedor = new Fornecedor(txtNomeFornecedor.getText(), txtNomeFantasia.getText(),txtCnpjCpf.getText(), txtTelefoneFornecedor.getText(), txtCodigoFornecedor.getText(), endereco);
+
+        ConnectionDB connectionDB = new ConnectionDB();
+        Connection conn = connectionDB.getConnection();
+
+        String query = "INSERT INTO FORNECEDOR(NOME_FORNECEDOR, NOME_FANTASIA, CNPJ, TELEFONE_FORNECEDOR, CODIGO_FORNECEDOR)" + " VALUES ('" + fornecedor.getNomeFornecedor() + "','" + fornecedor.getNomeFantasia() +
+                "','" + fornecedor.getCnpj() + "','" + fornecedor.getTelefoneFornecedor() + "','" + fornecedor.getCodigoFornecedor() + "')";
+
+        try {
+            Statement statement = conn.createStatement();
+            statement.executeUpdate(query);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+
 
     });
     btnLimpar.setOnAction(event -> {
@@ -70,11 +89,9 @@ public VBox getTelaCadastroFornecedor (Stage stage) {
         txtCnpjCpf.setText(" ");
         txtTelefoneFornecedor.setText(" ");
         txtCodigoFornecedor.setText(" ");
-        txtEnderecoFornecedor.setText(" ");
         txtLogradouroFornecedor.setText(" ");
         txtComplementoFornecedor.setText(" ");
         txtNumero.setText(" ");
-        txtEstado.setText(" ");
         txtBairro.setText(" ");
         txtCepFornecedor.setText(" ");
 

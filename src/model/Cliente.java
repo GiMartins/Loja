@@ -4,18 +4,16 @@ public class Cliente {
 
     private String nome;
     private String sobreNome;
-    private String idade;
-    private String cpf;
-    private String cnpj;
+    private String dataNascimento;
+    private String cpfCnpj;
     private String codigo;
     private Endereco endereco;
 
-    public Cliente(String nome, String sobreNome, String idade, String cpf, String cnpj, String codigo, Endereco endereco) {
+    public Cliente(String nome, String sobreNome, String dataNascimento, String cpfCnpj, String codigo, Endereco endereco) {
         this.nome = nome;
         this.sobreNome = sobreNome;
-        this.idade = idade;
-        this.cpf = cpf;
-        this.cnpj = cnpj;
+        this.dataNascimento = dataNascimento;
+        this.cpfCnpj = cpfCnpj;
         this.codigo = codigo;
         this.endereco = endereco;
     }
@@ -36,28 +34,20 @@ public class Cliente {
         this.sobreNome = sobreNome;
     }
 
-    public String getIdade() {
-        return idade;
+    public String getDataNascimento() {
+        return dataNascimento;
     }
 
-    public void setIdade(String idade) {
-        this.idade = idade;
+    public void setDataNascimento(String dataNascimento) {
+        this.dataNascimento = dataNascimento;
     }
 
-    public String getCpf() {
-        return cpf;
+    public String getCpfCnpj() {
+        return cpfCnpj;
     }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    public String getCnpj() {
-        return cnpj;
-    }
-
-    public void setCnpj(String cnpj) {
-        this.cnpj = cnpj;
+    public void setCpfCnpj(String cpfCnpj) {
+        this.cpfCnpj = cpfCnpj;
     }
 
     public String getCodigo() {
@@ -81,9 +71,8 @@ public class Cliente {
         return "Cliente{" +
                 "nome='" + nome + '\'' +
                 ", sobreNome='" + sobreNome + '\'' +
-                ", idade='" + idade + '\'' +
-                ", cpf='" + cpf + '\'' +
-                ", cnpj='" + cnpj + '\'' +
+                ", dataNascimento='" + dataNascimento + '\'' +
+                ", cpfCnpj='" + cpfCnpj + '\'' +
                 ", codigo='" + codigo + '\'' +
                 ", endereco=" + endereco +
                 '}';
