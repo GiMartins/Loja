@@ -15,11 +15,13 @@ public class MenuBarView {
         MenuItem cadastrarCliente = new MenuItem("Cliente");
         MenuItem cadastrarProduto = new MenuItem("Produtos");
         MenuItem cadastrarFornecedor = new MenuItem("Fornecedor");
-
+        Menu listar = new Menu ("Listar");
+        MenuItem listarCliente = new MenuItem("Cliente");
 
         cadastrar.getItems().addAll(cadastrarCliente, cadastrarProduto, cadastrarFornecedor);
+        listar.getItems().addAll(listarCliente);
 
-        menuBar.getMenus().addAll(cadastrar);
+        menuBar.getMenus().addAll(cadastrar, listar);
 
         cadastrarProduto.setOnAction(event -> {
         stg.setTitle("Cadastrar Produtos");
@@ -40,6 +42,14 @@ public class MenuBarView {
             stg.setScene(new Scene(telaCadastroCliente.getTelaCadastro(stg), 500, 650));
             stg.show();
         });
+
+        listarCliente.setOnAction(event -> {
+            stg.setTitle("Listar Cliente");
+            TelaListarCliente telaListarCliente = new TelaListarCliente();
+            stg.setScene(new Scene(telaListarCliente.getTelaListarCliente(stg), 500, 650));
+            stg.show();
+        });
+
 
 
         return menuBar;
