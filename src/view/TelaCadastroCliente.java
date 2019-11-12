@@ -13,6 +13,7 @@ import repository.ConnectionDB;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 public class TelaCadastroCliente {
 
@@ -55,6 +56,7 @@ public class TelaCadastroCliente {
         btnCadastrar.setOnAction(Event ->{
             Endereco endereco = new Endereco(txtLogradouro.getText(), txtComplemento.getText(), txtNumero.getText(), txtBairro.getText(), txtCep.getText());
             Cliente cliente = new Cliente(txtNome.getText(), txtSobrenome.getText(), txtDataNascimento.getText(), txtCpfCnpj.getText(), txtCodigo.getText(), endereco);
+
 
             ConnectionDB connectionDB = new ConnectionDB();
             Connection conn = connectionDB.getConnection();
