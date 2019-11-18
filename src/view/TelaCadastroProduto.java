@@ -55,7 +55,7 @@ public class TelaCadastroProduto{
         MenuBar menuBar = menuBarView.getMenuBar(stage);
 
         raiz.getChildren().addAll(menuBar, lblProduto, txtNomeProduto, lblTipoProduto, txtTipoProduto, lblMarca, txtMarcaDoProduto, lblFornecedor, txtFornecedor, lblQuantidade, txtQuantidade, lblPrecoCompra,
-                lblNumNota, txtNumNota, lblValidade, txtValidadeDoProduto, lblCodigoBarras, txtCodigoDeBarras, lblMensagem, btnCadastrar, btnApagar);
+                txtPrecoDeCompra, lblNumNota, txtNumNota, lblValidade, txtValidadeDoProduto, lblCodigoBarras, txtCodigoDeBarras, lblMensagem, btnCadastrar, btnApagar);
 
             btnCadastrar.setOnAction(Event ->{
                 produtos produtos = new produtos(txtNomeProduto.getText(), txtTipoProduto.getText(), txtMarcaDoProduto.getText(), txtFornecedor.getText(), txtQuantidade.getText(), txtPrecoDeCompra.getText(),
