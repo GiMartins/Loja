@@ -18,6 +18,7 @@ public class MenuBarView {
         Menu listar = new Menu ("Listar");
         MenuItem listarCliente = new MenuItem("Cliente");
 
+
         cadastrar.getItems().addAll(cadastrarCliente, cadastrarProduto, cadastrarFornecedor);
         listar.getItems().addAll(listarCliente);
 
@@ -49,6 +50,7 @@ public class MenuBarView {
             stg.setScene(new Scene(telaListarCliente.getTelaListarCliente(stg), 500, 650));
             stg.show();
         });
+
 
 
 
