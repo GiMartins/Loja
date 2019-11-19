@@ -33,7 +33,7 @@ public class TelaCadastroProduto{
         Label lblPrecoCompra = new Label("Preço de Compra");
         Label lblNumNota = new Label("Nº Nota");
         Label lblValidade = new Label("Válidade do Produto");
-        Label lblCodigoBarras = new Label("Código de Barras");
+        Label lblCodigoProduto = new Label("Código de Barras");
         Label lblMensagem = new Label("");
 
         TextField txtNomeProduto = new TextField();
@@ -44,7 +44,7 @@ public class TelaCadastroProduto{
         TextField txtPrecoDeCompra = new TextField();
         TextField txtNumNota = new TextField();
         TextField txtValidadeDoProduto = new TextField();
-        TextField txtCodigoDeBarras = new TextField();
+        TextField txtCodigoProduto = new TextField();
 
 
         Button btnCadastrar = new Button("Cadastrar Produtos");
@@ -55,18 +55,18 @@ public class TelaCadastroProduto{
         MenuBar menuBar = menuBarView.getMenuBar(stage);
 
         raiz.getChildren().addAll(menuBar, lblProduto, txtNomeProduto, lblTipoProduto, txtTipoProduto, lblMarca, txtMarcaDoProduto, lblFornecedor, txtFornecedor, lblQuantidade, txtQuantidade, lblPrecoCompra,
-                txtPrecoDeCompra, lblNumNota, txtNumNota, lblValidade, txtValidadeDoProduto, lblCodigoBarras, txtCodigoDeBarras, lblMensagem, btnCadastrar, btnApagar);
+                txtPrecoDeCompra, lblNumNota, txtNumNota, lblValidade, txtValidadeDoProduto, lblCodigoProduto, txtCodigoProduto, lblMensagem, btnCadastrar, btnApagar);
 
             btnCadastrar.setOnAction(Event ->{
                 produtos produtos = new produtos(txtNomeProduto.getText(), txtTipoProduto.getText(), txtMarcaDoProduto.getText(), txtFornecedor.getText(), txtQuantidade.getText(), txtPrecoDeCompra.getText(),
-                        txtNumNota.getText(), txtValidadeDoProduto.getText(), txtCodigoDeBarras.getText());
+                        txtNumNota.getText(), txtValidadeDoProduto.getText(), txtCodigoProduto.getText());
 
                 ConnectionDB connectionDB = new ConnectionDB();
                 Connection conn = connectionDB.getConnection();
 
-                String query = "INSERT INTO PRODUTOS (NOME, TIPO_PRODUTO, MARCA, FORNECEDOR, QUANTIDADE, PRECO_COMPRA, NOTA, VALIDADE, CODIGO_BARRAS)" + "VALUES ('" + produtos.getNome()
+                String query = "INSERT INTO PRODUTOS (NOME_PRODUTO, TIPO_PRODUTO, MARCA, FORNECEDOR, QUANTIDADE, PRECO_COMPRA, NOTA, VALIDADE, CODIGO_PRODUTO)" + "VALUES ('" + produtos.getNome()
                         + "','" + produtos.getTipoProduto() + "','" + produtos.getMarca() +"','" + produtos.getFornecedor() + "','" + produtos.getQuantidade() + "','" + produtos.getPrecoCompra() + "','" + produtos.getNota() + "','" + produtos.getValidade()
-                        +"','" + produtos.getCodigoProduto() + "')";
+                        +"'," + produtos.getCodigoProduto() + ")";
 
 
                 try {
@@ -87,7 +87,7 @@ public class TelaCadastroProduto{
             txtPrecoDeCompra.setText("");
             txtNumNota.setText("");
             txtValidadeDoProduto.setText("");
-            txtCodigoDeBarras.setText("");
+            txtCodigoProduto.setText("");
         });
 
 
