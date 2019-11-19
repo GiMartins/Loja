@@ -22,9 +22,7 @@ public class MenuBarView {
 
 
         cadastrar.getItems().addAll(cadastrarCliente, cadastrarProduto, cadastrarFornecedor);
-        listar.getItems().addAll(listarCliente, listarProduto);
-        listar.getItems().addAll(listarCliente, listarFornecedor);
-
+        listar.getItems().addAll(listarCliente, listarProduto, listarFornecedor);
         menuBar.getMenus().addAll(cadastrar, listar);
 
         cadastrarProduto.setOnAction(event -> {
