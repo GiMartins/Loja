@@ -25,6 +25,8 @@ public class TelaCadastroProduto{
 
         VBox raiz = new VBox();
 
+
+
         Label lblProduto = new Label("Nome do Produto:");
         Label lblTipoProduto = new Label("Tipo de Produto");
         Label lblMarca = new Label("Marca do Produto");
@@ -33,7 +35,7 @@ public class TelaCadastroProduto{
         Label lblPrecoCompra = new Label("Preço de Compra");
         Label lblNumNota = new Label("Nº Nota");
         Label lblValidade = new Label("Válidade do Produto");
-        Label lblCodigoProduto = new Label("Código de Barras");
+        Label lblCodigoProduto = new Label("Código do Prodruto");
         Label lblMensagem = new Label("");
 
         TextField txtNomeProduto = new TextField();

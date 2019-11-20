@@ -1,8 +1,10 @@
 package view;
 
 import javafx.collections.FXCollections;
+import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MenuBar;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import repository.ConnectionDB;
@@ -18,6 +20,9 @@ import java.util.ArrayList;
 public class TelaListaFornecedor {
     public VBox getTelaListaFornecedor(Stage stage) {
         VBox vBox = new VBox();
+
+        TextField nomeDigitado = new TextField();
+        Button btnBuscar = new Button("Buscar");
 
         ArrayList<String> retorno =
                 new ArrayList<String>();
@@ -42,7 +47,7 @@ public class TelaListaFornecedor {
             MenuBar menuBar = menuBarView.getMenuBar(stage);
 
 
-            vBox.getChildren().addAll(menuBar, listView);
+            vBox.getChildren().addAll(menuBar, nomeDigitado, btnBuscar, listView);
         } catch (SQLException e) {
             e.printStackTrace();
 
