@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 import repository.ConnectionDB;
 
 
+import javax.swing.*;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -25,6 +26,45 @@ public class TelaListarCliente {
         TextField txtBuscar = new TextField("");
         Button btnBuscar = new Button("Buscar");
 
+        btnBuscar.setOnAction(event -> {
+            String buscar = txtBuscar.getText();
+            String querySelect = null;
+            if(buscar != null & buscar != ""){
+                querySelect = "SELECT * FROM CLIENTE WHERE NOME LIKE '%" + buscar + "%'";
+            }
+
+            ArrayList<String> retorno =
+                    new ArrayList<String>();
+
+            ConnectionDB connectionDB = new ConnectionDB();
+            Connection conn = connectionDB.getConnection();
+
+
+            try {
+                Statement statement = conn.createStatement();
+                ResultSet rs = statement.executeQuery(querySelect);
+                while (rs.next()){
+                    String nome = rs.getString("NOME");
+                    String sobrenome = rs.getString("SOBRENOME");
+                    String dataNascimento = rs.getString("DATA_NASCIMENTO");
+                    String CpfCnpj = rs.getString("CPF_CNPJ");
+                    String codigo = rs.getString("CODIGO");
+                    retorno.add(nome);
+
+                }
+                ListView listView = new ListView(FXCollections.observableArrayList(retorno));
+                vBox.getChildren().clear();
+
+                MenuBarView menuBarView = new MenuBarView();
+                MenuBar menuBar = menuBarView.getMenuBar(stage);
+
+                vBox.getChildren().addAll(menuBar, txtBuscar, btnBuscar, listView);
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        });
+
         ArrayList<String> retorno =
                 new ArrayList<String>();
 
@@ -32,6 +72,8 @@ public class TelaListarCliente {
         Connection conn = connectionDB.getConnection();
 
         String query = "SELECT * FROM CLIENTE";
+
+
         try {
             Statement statement = conn.createStatement();
             ResultSet rs = statement.executeQuery(query);
@@ -49,7 +91,7 @@ public class TelaListarCliente {
             MenuBarView menuBarView = new MenuBarView();
             MenuBar menuBar = menuBarView.getMenuBar(stage);
 
-            vBox.getChildren().addAll(menuBar, listView);
+            vBox.getChildren().addAll(menuBar, txtBuscar, btnBuscar, listView);
 
         } catch (SQLException e) {
             e.printStackTrace();
