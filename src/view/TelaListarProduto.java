@@ -16,7 +16,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class TelaListarProduto {
-    public VBox getTelaListarCliente(Stage stage){
+    public VBox getTelaListarProduto(Stage stage){
         VBox vBox = new VBox();
 
         TextField nomeDigitado = new TextField();

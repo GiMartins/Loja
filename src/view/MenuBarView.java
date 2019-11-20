@@ -54,7 +54,7 @@ public class MenuBarView {
         listarProduto.setOnAction(event -> {
             stg.setTitle("Listar Produto");
             TelaListarProduto telaListarProduto = new TelaListarProduto();
-            stg.setScene(new Scene(telaListarProduto.getTelaListarCliente(stg), 500, 650));
+            stg.setScene(new Scene(telaListarProduto.getTelaListarProduto(stg), 500, 650));
             stg.show();
         });
 
