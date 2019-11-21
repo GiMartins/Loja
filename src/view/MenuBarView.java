@@ -8,34 +8,34 @@ import javafx.stage.Stage;
 
 public class MenuBarView {
 
-    public MenuBar getMenuBar(Stage stg) {
+    public MenuBar getMenuBar(Stage stg){
 
         MenuBar menuBar = new MenuBar();
         Menu cadastrar = new Menu("Cadastrar");
         MenuItem cadastrarCliente = new MenuItem("Cliente");
         MenuItem cadastrarProduto = new MenuItem("Produtos");
         MenuItem cadastrarFornecedor = new MenuItem("Fornecedor");
-        Menu listar = new Menu("Listar");
+        Menu listar = new Menu ("Listar");
         MenuItem listarCliente = new MenuItem("Cliente");
+        MenuItem listarProduto = new MenuItem("Produto");
         MenuItem listarFornecedor = new MenuItem("Fornecedor");
 
 
         cadastrar.getItems().addAll(cadastrarCliente, cadastrarProduto, cadastrarFornecedor);
-        listar.getItems().addAll(listarCliente, listarFornecedor);
-
+        listar.getItems().addAll(listarCliente, listarProduto, listarFornecedor);
         menuBar.getMenus().addAll(cadastrar, listar);
 
         cadastrarProduto.setOnAction(event -> {
-            stg.setTitle("Cadastrar Produtos");
-            TelaCadastroProduto TelaCadastroProdutos = new TelaCadastroProduto();
-            stg.setScene(new Scene(TelaCadastroProdutos.getTelaProdutos(stg), 500, 650));
-            stg.show();
-        });
+        stg.setTitle("Cadastrar Produtos");
+        TelaCadastroProduto TelaCadastroProdutos = new TelaCadastroProduto();
+        stg.setScene(new Scene(TelaCadastroProdutos.getTelaProdutos(stg), 500, 500));
+        stg.show();
+    });
         cadastrarFornecedor.setOnAction(actionEvent -> {
-            stg.setTitle("Cadastrar Fornecedor");
-            TelaCadastroFornecedor TelaCadastroFornecedorView = new TelaCadastroFornecedor();
-            stg.setScene(new Scene(TelaCadastroFornecedorView.getTelaCadastroFornecedor(stg), 500, 650));
-            stg.show();
+         stg.setTitle("Cadastrar Fornecedor");
+         TelaCadastroFornecedor TelaCadastroFornecedorView = new TelaCadastroFornecedor();
+         stg.setScene(new Scene(TelaCadastroFornecedorView.getTelaCadastroFornecedor(stg), 500, 650));
+         stg.show();
         });
 
         cadastrarCliente.setOnAction(event -> {
@@ -51,6 +51,12 @@ public class MenuBarView {
             stg.setScene(new Scene(telaListarCliente.getTelaListarCliente(stg), 500, 650));
             stg.show();
         });
+        listarProduto.setOnAction(event -> {
+            stg.setTitle("Listar Produto");
+            TelaListarProduto telaListarProduto = new TelaListarProduto();
+            stg.setScene(new Scene(telaListarProduto.getTelaListarProduto(stg), 500, 650));
+            stg.show();
+        });
 
         listarFornecedor.setOnAction(event -> {
             stg.setTitle("Listar Fornecedor");
@@ -63,4 +69,5 @@ public class MenuBarView {
 
         return menuBar;
     }
-   }
+
+}
