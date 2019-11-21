@@ -64,8 +64,7 @@ public class TelaListaFornecedor {
 
 
 
-        TextField nomeDigitado = new TextField();
-        Button btnBuscar = new Button("Buscar");
+
 
         ArrayList<String> retorno =
                 new ArrayList<String>();
